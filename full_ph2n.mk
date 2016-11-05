@@ -29,8 +29,8 @@ PRODUCT_PACKAGES += \
     charger_res_images
 
 # Fstab
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery.fstab:root/recovery.fstab
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/recovery.fstab:root/recovery.fstab
 
 # Kernel
 #PRODUCT_COPY_FILES += \
