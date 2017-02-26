@@ -41,20 +41,16 @@ TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 user_debug=30 msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 androidboot.hardware=ph2n androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
-#BOARD_KERNEL_TAGS_OFFSET := 0x00000100
-#BOARD_RAMDISK_OFFSET := 0x01000000
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 TARGET_KERNEL_APPEND_DTB := true
-#TARGET_PREBUILT_KERNEL := device/lge/ph2n/Image
-#TARGET_KERNEL_ARCH := arm64
-#TARGET_KERNEL_HEADER_ARCH := arm64
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
-TARGET_KERNEL_SOURCE := kernel/lge/ph2n
-TARGET_KERNEL_CONFIG := ph2n_mpcs_us-perf_defconfig
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
+#TARGET_PREBUILT_KERNEL := device/lge/ph2n/kernel
+#KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
+#TARGET_KERNEL_SOURCE := kernel/lge/ph2n
+#TARGET_KERNEL_CONFIG := ph2n_mpcs_us-perf_defconfig
+#TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 
-#TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/recovery/kernel
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/kernel
 
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc/
@@ -72,18 +68,21 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
 #Recovery
+RECOVERY_VARIANT := twrp 
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/etc/twrp.fstab
 TW_THEME := portrait_hdpi
-TW_INCLUDE_CRYPTO := true
 TW_MAX_BRIGHTNESS := 255
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 TW_DEFAULT_EXTERNAL_STORAGE := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
-BOARD_SUPPRESS_SECURE_ERASE := true
+#BOARD_SUPPRESS_SECURE_ERASE := true
 RECOVERY_SDCARD_ON_DATA := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_IGNORE_MISC_WIPE_DATA := true
+TW_SCREEN_BLANK_ON_BOOT := true
 
 # Encryption support
+TW_INCLUDE_CRYPTO := true
 #TARGET_HW_DISK_ENCRYPTION := true
 #TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 

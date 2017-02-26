@@ -13,11 +13,11 @@
 # limitations under the License.
 
 ## Specify phone tech before including full_phone
-$(call inherit-product, vendor/omni/config/gsm.mk)
+#$(call inherit-product, vendor/omni/config/gsm.mk)
 
 $(call inherit-product, device/lge/ph2n/full_ph2n.mk)
 
 # Inherit some common Omni stuff.
-$(call inherit-product, vendor/omni/config/common.mk)
+#$(call inherit-product, vendor/omni/config/common.mk)
 
 PRODUCT_NAME := omni_ph2n
